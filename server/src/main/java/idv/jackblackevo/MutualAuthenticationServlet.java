@@ -17,6 +17,7 @@ public class MutualAuthenticationServlet extends HttpServlet {
   //            truststoreFile="path/to/trustStoreFile" />
   // clientAuth="true" 表示開啟雙向 SSL
 
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
@@ -55,6 +56,7 @@ public class MutualAuthenticationServlet extends HttpServlet {
     }
   }
 
+  @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) {
     doGet(request, response);
   }
