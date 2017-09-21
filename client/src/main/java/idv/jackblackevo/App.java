@@ -62,8 +62,10 @@ public class App {
       connection.setRequestProperty("Content-Type", "application/json");
       connection.setRequestProperty("Accept", "application/json");
 
-      try (OutputStream output = connection.getOutputStream();
-           PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)) {
+      try (
+        OutputStream output = connection.getOutputStream();
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)
+      ) {
         writer.write(data.toString());
         output.flush();
       } catch (UnsupportedEncodingException e) {
@@ -72,7 +74,15 @@ public class App {
         e.printStackTrace();
       }
 
-      try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+      int statusCode = connection.getResponseCode();
+      InputStream is;
+      if (statusCode == 200) {
+        is = connection.getInputStream();
+      } else {
+        is = connection.getErrorStream();
+      }
+
+      try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
         StringBuilder responseBodySB = new StringBuilder();
         String tempStr;
         while ((tempStr = reader.readLine()) != null) {
