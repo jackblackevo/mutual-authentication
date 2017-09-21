@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>SSLServlet</servlet-name>
-    <servlet-class>MutualAuthenticationServlet</servlet-class>
+    <servlet-class>idv.jackblackevo.MutualAuthenticationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SSLServlet</servlet-name>
