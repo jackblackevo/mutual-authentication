@@ -25,18 +25,21 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.7.v20170914</version>
         <configuration>
-          <path>/${project.build.finalName}</path>
-          <httpsPort>8443</httpsPort>
-          <clientAuth>true</clientAuth>
-          <keystoreFile>${basedir}/src/main/resources/keyStoreFileName</keystoreFile>
-          <keystorePass>password</keystorePass>
-          <truststoreFile>${basedir}/src/main/resources/trustStoreFileName</truststoreFile>
+          <webApp>
+            <contextPath>/${project.build.finalName}</contextPath>
+          </webApp>
+          <jettyXml>jetty.xml,jetty-ssl.xml,jetty-https.xml</jettyXml>
+          <stopPort>9966</stopPort>
+          <stopKey>foo</stopKey>
           <systemProperties>
-            <javax.net.debug>ssl</javax.net.debug>
+            <systemProperty>
+              <name>javax.net.debug</name>
+              <value>ssl</value>
+            </systemProperty>
           </systemProperties>
         </configuration>
       </plugin>

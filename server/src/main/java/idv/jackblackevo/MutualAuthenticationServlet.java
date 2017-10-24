@@ -25,7 +25,7 @@ public class MutualAuthenticationServlet extends HttpServlet {
     JsonObjectBuilder responseJOB = Json.createObjectBuilder();
 
     X509Certificate[] certs = (X509Certificate[]) request.getAttribute("javax.servlet.request.X509Certificate");
-    // Tomcat Connector 設定的 clientAuth="false" 的話，certs 會是 null
+    // Jetty 的 sslContextFactory 設定為 needClientAuth="false" 的話，certs 會是 null
     if (certs != null) {
       JsonArrayBuilder jArrayBuilder = Json.createArrayBuilder();
       for (int i = 0; i < certs.length; i++) {
