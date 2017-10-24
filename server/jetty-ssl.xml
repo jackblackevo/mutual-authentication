@@ -59,11 +59,4 @@
     </Call>
   </New>
 
-  <!-- 設定 KeyStore、TrustStore -->
-  <New id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
-    <Set name="KeyStorePath"><Property name="jetty.home" default="." />/src/main/resources/keyStoreFileName</Set>
-    <Set name="KeyStorePassword">password</Set>
-    <Set name="TrustStorePath"><Property name="jetty.home" default="." />/src/main/resources/trustStoreFileName</Set>
-    <Set name="needClientAuth">true</Set>
-  </New>
 </Configure>

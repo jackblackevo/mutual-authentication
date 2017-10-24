@@ -5,9 +5,14 @@ Two-way SSL authentication Server & Client.
 ### Certificate Files
 Copy your certificate files (include KeyStore, TrustStore) to: server/src/main/resources
 
-### jetty-ssl.xml
-* Path: server/jetty-ssl.xml
-* Edit: `KeyStorePath`, `KeyStorePassword`, `TrustStorePath`
+### pom.xml
+* Path: server/pom.xml
+* Edit:
+  * `jetty.sslContext.keyStorePath`
+  * `jetty.sslContext.keyStorePassword`
+  * `jetty.sslContext.keyManagerPassword`
+  * `jetty.sslContext.trustStorePath`
+  * `jetty.sslContext.trustStorePassword`
 
 ### Run & Stop
 Run:

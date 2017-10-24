@@ -32,13 +32,42 @@
           <webApp>
             <contextPath>/${project.build.finalName}</contextPath>
           </webApp>
-          <jettyXml>jetty.xml,jetty-ssl.xml,jetty-https.xml</jettyXml>
+          <jettyXml>jetty.xml,jetty-ssl.xml,jetty-ssl-context.xml,jetty-https.xml</jettyXml>
           <stopPort>9966</stopPort>
           <stopKey>foo</stopKey>
           <systemProperties>
             <systemProperty>
               <name>javax.net.debug</name>
               <value>ssl</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.needClientAuth</name>
+              <value>true</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.trustStoreType</name>
+              <value>JKS</value>
+            </systemProperty>
+            <!-- 設定 KeyStore、TrustStore -->
+            <systemProperty>
+              <name>jetty.sslContext.keyStorePath</name>
+              <value>${basedir}/src/main/resources/keyStoreFileName</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.keyStorePassword</name>
+              <value>password</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.keyManagerPassword</name>
+              <value>password</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.trustStorePath</name>
+              <value>${basedir}/src/main/resources/trustStoreFileName</value>
+            </systemProperty>
+            <systemProperty>
+              <name>jetty.sslContext.trustStorePassword</name>
+              <value>password</value>
             </systemProperty>
           </systemProperties>
         </configuration>
